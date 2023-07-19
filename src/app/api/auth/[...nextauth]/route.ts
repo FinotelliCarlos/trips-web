@@ -6,12 +6,14 @@ import { Adapter } from "next-auth/adapters";
 
 const prisma = new PrismaClient();
 
-export default NextAuth({
+const handler = NextAuth({
   adapter: PrismaAdapter(prisma) as Adapter,
   providers: [
     GoogleProvider({
-      clientId: String(process.env.GOOGLE_CLIENT_ID),
-      clientSecret: String(process.env.GOOGLE_CLIENT_SECRET),
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
 });
+
+export { handler as GET, handler as POST };
