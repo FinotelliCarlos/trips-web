@@ -62,12 +62,14 @@ model Trip {
   location    String
   startDate   DateTime
   endDate     DateTime
-  pricePerDAy Decimal  @db.Decimal(8, 2)
+  pricePerDay Decimal  @db.Decimal(8, 2)
   description String
   coverImage  String
   imagesUrl   String[]
   highlights  String[]
   maxGuests   Int
+  countryCode String
+  recommended Boolean  @default(false)
 
   reservations TripReservation[]
 }
