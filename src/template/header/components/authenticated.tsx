@@ -15,7 +15,7 @@ const AuthenticatedHeaderButton = () => {
   const handleOpenMenu = () => setMenuIsOpen(prevState => !prevState)
 
   return (
-    <div className="relative flex items-center gap-3 py-2 px-3 border-primaryGrayLighter p-13 border border-solid rounded-full">
+    <div className="relative flex items-center gap-3 py-2 px-3 border border-solid border-primaryGrayLighter p-13 rounded-full">
       <AiOutlineMenu size={16} onClick={handleOpenMenu} className="cursor-pointer" />
 
       <Image
@@ -28,18 +28,7 @@ const AuthenticatedHeaderButton = () => {
 
       {menuIsOpen && (
         <div
-          className="absolute
-              text-sm
-              top-12
-              w-full
-              h-full
-              bg-white
-              rounded-lg
-              shadow-md
-              flex
-              flex-col
-              justify-center
-              items-center"
+          className="absolute text-sm top-12 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center"
         >
           <button className="text-primary text-sm font-semibold" onClick={handleSignOut}>Logout</button>
         </div>

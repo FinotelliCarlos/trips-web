@@ -1,18 +1,19 @@
 "use client"
 
 import { useSession } from "next-auth/react"
-import LogoTrips from "../logo-trips"
 import AuthenticatedHeaderButton from "./components/authenticated"
 import LoginButton from "./components/login"
+import LogoTrips from "@/components/logo-trips"
 
 const Header = () => {
   const { status } = useSession()
 
   return (
-    <div className="container mx-auto p-5 py-0 h-[93px] flex justify-between items-center">
+    <div className="container mx-auto p-5 py-0 h-[93px] flex w-full justify-between items-center">
       <LogoTrips />
 
-      {status === 'unauthenticated' &&
+
+      {status !== 'authenticated' &&
         <LoginButton />
       }
 
