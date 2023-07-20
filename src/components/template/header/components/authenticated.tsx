@@ -29,7 +29,7 @@ const AuthenticatedHeaderButton = () => {
 
       {menuIsOpen && (
         <div
-          className="absolute text-sm top-12 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center"
+          className="absolute z-50 text-sm top-12 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center"
         >
           <button className="text-primary text-sm font-semibold" onClick={handleSignOut}>Logout</button>
         </div>

@@ -10,6 +10,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Amalfi, Itália",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "IT",
         coverImage:
           "https://images.unsplash.com/photo-1455587734955-081b22074882?ixlib=rb-4.0.3&ixid=M3wxMA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -37,6 +38,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "New York, Estados Unidos",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "US",
         coverImage:
           "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -64,6 +66,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Florença, Itália",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "IT",
         coverImage:
           "https://images.unsplash.com/photo-1534612899740-55c821a90129?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -91,6 +94,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Lago Sereno, Suíça",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "CH",
         coverImage:
           "https://images.unsplash.com/photo-1568084680786-a84f91d1153c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80",
@@ -118,6 +122,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Madrid, Espanha",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "ES",
         coverImage:
           "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -145,6 +150,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Montreal, Canadá",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "CA",
         coverImage:
           "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -172,6 +178,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Oslo, Noruega",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "NO",
         coverImage:
           "https://images.unsplash.com/photo-1610530531783-56a4e92a3305?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
@@ -199,6 +206,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Amsterdam, Holanda",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "NL",
         coverImage:
           "https://images.unsplash.com/photo-1500076656116-558758c991c1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
@@ -226,6 +234,7 @@ async function main() {
         startDate: new Date("2023-07-03"),
         endDate: new Date("2023-07-30"),
         location: "Paris, França",
+        locationDescription: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur, iusto veritatis laborum vero voluptatum officia porro, quidem, itaque tempore magnam atque perferendis quo deleniti sapiente numquam assumenda doloremque facilis corporis",
         countryCode: "FR",
         coverImage:
           "https://images.unsplash.com/photo-1515496281361-241a540151a5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
