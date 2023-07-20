@@ -1,9 +1,16 @@
 import LabelElement from "@/components/label-element"
 import TripItem from "@/components/trip-item"
+import { prisma } from "@/lib/prisma"
 import { Trip } from "@prisma/client"
 
+const getTrips = async () => {
+  const trips = await prisma.trip.findMany({})
+
+  return trips
+}
+
 const RecommendedTrips = async () => {
-  const trips: Trip[] = await fetch("http://localhost:3000/api/trips").then(res => res.json())
+  const trips = await getTrips()
 
   return (
     <div className="container mx-auto p-5">

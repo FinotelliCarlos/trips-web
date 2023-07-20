@@ -38,7 +38,7 @@ const QuickSearch = () => {
         {QUICK_SEARCH_TABS.map((tab) => {
           return (
             <div key={tab.alt} className="flex flex-col items-center gap-1 cursor-pointer">
-              <Image width={35} height={35} src={tab.src} alt={tab.alt} />
+              <Image width={35} height={35} loading="eager" src={tab.src} alt={tab.alt} />
               <p className="text-sm text-primaryGray">{tab.title}</p>
             </div>
           )

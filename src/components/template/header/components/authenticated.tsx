@@ -15,13 +15,14 @@ const AuthenticatedHeaderButton = () => {
   const handleOpenMenu = () => setMenuIsOpen(prevState => !prevState)
 
   return (
-    <div className="relative flex items-center gap-3 py-2 px-3 border border-solid border-primaryGrayLighter p-13 rounded-full">
+    <div className="relative flex items-center gap-3 py-1 px-4 border border-solid border-primaryGrayLighter p-13 rounded-full">
       <AiOutlineMenu size={16} onClick={handleOpenMenu} className="cursor-pointer" />
 
       <Image
         className="rounded-full shadow-md"
         width={35}
         height={35}
+        loading="eager"
         src={currentUser?.image!}
         alt={currentUser?.name!}
       />

@@ -1,9 +1,9 @@
 "use client"
 
+import LogoTrips from "@/components/logo-trips"
 import { useSession } from "next-auth/react"
 import AuthenticatedHeaderButton from "./components/authenticated"
 import LoginButton from "./components/login"
-import LogoTrips from "@/components/logo-trips"
 
 const Header = () => {
   const { status } = useSession()
