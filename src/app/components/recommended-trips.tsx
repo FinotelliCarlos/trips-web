@@ -12,6 +12,8 @@ const getTrips = async () => {
 const RecommendedTrips = async () => {
   const trips = await getTrips()
 
+  if (!trips) return null
+
   return (
     <div className="container mx-auto p-5">
       <LabelElement text="Destinos recomendados" />
