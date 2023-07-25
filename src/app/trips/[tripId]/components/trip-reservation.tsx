@@ -3,11 +3,12 @@
 import Button from "@/components/button"
 import DatePicker from "@/components/date-picker"
 import Input from "@/components/input"
-import { Trip } from "@prisma/client"
 import { Controller, useForm } from "react-hook-form"
 
 interface TripReservationProps {
-  trip: Trip
+  tripStartDate: Date
+  tripEndDate: Date
+  maxGuests: number
 }
 
 interface TripReservationForm {
@@ -16,15 +17,16 @@ interface TripReservationForm {
   endDate: Date | null;
 }
 
-const TripReservation = ({ trip }: TripReservationProps) => {
-  const { register, handleSubmit, formState: { errors }, control } = useForm<TripReservationForm>()
+const TripReservation = ({ tripStartDate, tripEndDate, maxGuests }: TripReservationProps) => {
+  const { register, handleSubmit, formState: { errors }, control, watch } = useForm<TripReservationForm>()
 
   const onSubmit = () => { }
+
+  const currentStartDate = watch('startDate')
 
   return (
     <div className="flex flex-col px-5">
       <div className="flex gap-4">
-
         <Controller
           name="startDate"
           control={control}
@@ -42,6 +44,7 @@ const TripReservation = ({ trip }: TripReservationProps) => {
               selected={field.value}
               error={!!errors.startDate}
               errorMessage={errors.startDate?.message}
+              minDate={tripStartDate}
             />
           }
         />
@@ -63,6 +66,8 @@ const TripReservation = ({ trip }: TripReservationProps) => {
               selected={field.value}
               error={!!errors.endDate}
               errorMessage={errors.endDate?.message}
+              maxDate={tripEndDate}
+              minDate={currentStartDate ?? tripEndDate}
             />}
         />
       </div>
@@ -74,7 +79,7 @@ const TripReservation = ({ trip }: TripReservationProps) => {
             message: 'Número de hóspedes é obrigatório!'
           }
         })}
-        placeholder={`Número de hóspedes (max: ${trip.maxGuests})`}
+        placeholder={`Número de hóspedes (max: ${maxGuests})`}
         className="mt-4"
         error={!!errors.guests}
         errorMessage={errors.guests?.message}
