@@ -3,26 +3,48 @@
 import Button from "@/components/button"
 import DatePicker from "@/components/date-picker"
 import Input from "@/components/input"
+import { differenceInDays } from "date-fns"
 import { Controller, useForm } from "react-hook-form"
 
 interface TripReservationProps {
+  tripId: string
   tripStartDate: Date
   tripEndDate: Date
   maxGuests: number
+  pricePerDay: number
 }
 
 interface TripReservationForm {
   guests: number
-  startDate: Date | null;
-  endDate: Date | null;
+  startDate: Date | null
+  endDate: Date | null
 }
 
-const TripReservation = ({ tripStartDate, tripEndDate, maxGuests }: TripReservationProps) => {
+const TripReservation = ({ tripId, tripStartDate, tripEndDate, maxGuests, pricePerDay }: TripReservationProps) => {
   const { register, handleSubmit, formState: { errors }, control, watch } = useForm<TripReservationForm>()
 
-  const onSubmit = () => { }
+  const onSubmit = async (data: TripReservationForm) => {
+    const response = await fetch('http://localhost:3000/api/trips/check', {
+      method: 'POST',
+      body:
+        Buffer.from(JSON.stringify({
+          startDate: data.startDate,
+          endDate: data.endDate,
+          tripId
+        }))
+    })
+
+    const res = await response.json()
+
+    console.log({ res })
+  }
 
   const currentStartDate = watch('startDate')
+  const currentEndDate = watch('endDate')
+
+  const totalNights = currentStartDate! && currentEndDate! && differenceInDays(currentEndDate, currentStartDate)
+
+  const currentTotalPrice = totalNights! * pricePerDay
 
   return (
     <div className="flex flex-col px-5">
@@ -86,8 +108,16 @@ const TripReservation = ({ tripStartDate, tripEndDate, maxGuests }: TripReservat
       />
 
       <div className="flex justify-between mt-3">
-        <p className="font-medium text-sm text-primaryDarker">Total ({0} noites)</p>
-        <p className="">R$ {4.234}</p>
+        <p className="font-medium text-sm text-primaryDarker">
+          Total ({totalNights ?? 0} noites)
+        </p>
+        <p className="">
+          {
+            currentStartDate && currentEndDate && totalNights > 0 ?
+              `R$ ${currentTotalPrice}` ?? 1
+              : 'R$ 0'
+          }
+        </p>
       </div>
 
       <div className="pb-10 border-b border-primaryGrayLighter w-full">
