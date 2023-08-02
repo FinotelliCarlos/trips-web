@@ -36,14 +36,20 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
           }))
       })
 
-      const { trip, totalPrice } = await response.json()
+      const res = await response.json()
+
+      if (res?.error) {
+        return router.push('/')
+      }
+
+      const { trip, totalPrice } = await res.json()
 
       setTrip(trip)
       setCurrentTotalPrice(totalPrice)
     }
 
     if (status === 'unauthenticated') {
-      router.push('/')
+      return router.push('/')
     }
 
     fetchTrip()
