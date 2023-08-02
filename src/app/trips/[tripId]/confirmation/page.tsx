@@ -4,8 +4,9 @@ import Button from '@/components/button'
 import { Trip } from '@prisma/client'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
+import { useSession } from 'next-auth/react'
 import Image from 'next/image'
-import { useSearchParams } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 
@@ -19,6 +20,8 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
   const [trip, setTrip] = useState<Trip | null>({} as Trip)
   const [currentTotalPrice, setCurrentTotalPrice] = useState<number | null>(0)
 
+  const router = useRouter()
+  const { status } = useSession()
   const searchParams = useSearchParams()
 
   useEffect(() => {
@@ -38,8 +41,14 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
       setTrip(trip)
       setCurrentTotalPrice(totalPrice)
     }
+
+    if (status === 'unauthenticated') {
+      router.push('/')
+    }
+
     fetchTrip()
-  }, [searchParams, tripId])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [searchParams, status, tripId])
 
   const startDate = new Date(searchParams.get('startDate') as string)
   const endDate = new Date(searchParams.get('endDate') as string)
