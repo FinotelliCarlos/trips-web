@@ -25,9 +25,9 @@ const getTripDetails = async ({ tripId }: getTripDetailsProps) => {
   return trip
 }
 
-const TripDetails = async ({ params }: TripDetailsParams) => {
+const TripDetails = async ({ params: { tripId } }: TripDetailsParams) => {
   const trip = await getTripDetails({
-    tripId: params.tripId
+    tripId: tripId
   })
 
   if (!trip) return null

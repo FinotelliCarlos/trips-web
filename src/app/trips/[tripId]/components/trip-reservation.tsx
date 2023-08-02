@@ -4,6 +4,7 @@ import Button from "@/components/button"
 import DatePicker from "@/components/date-picker"
 import Input from "@/components/input"
 import { differenceInDays } from "date-fns"
+import { useRouter } from "next/navigation"
 import { Controller, useForm } from "react-hook-form"
 
 interface TripReservationProps {
@@ -22,6 +23,8 @@ interface TripReservationForm {
 
 const TripReservation = ({ tripId, tripStartDate, tripEndDate, maxGuests, pricePerDay }: TripReservationProps) => {
   const { register, handleSubmit, formState: { errors }, control, watch, setError } = useForm<TripReservationForm>()
+
+  const router = useRouter()
 
   const onSubmit = async (data: TripReservationForm) => {
     const response = await fetch('http://localhost:3000/api/trips/check', {
@@ -67,6 +70,8 @@ const TripReservation = ({ tripId, tripStartDate, tripEndDate, maxGuests, priceP
 
       return
     }
+
+    router.push(`/trips/${tripId}/confirmation?startDate=${data.startDate?.toISOString()}&endDate=${data.endDate?.toISOString()}&guests=${data.guests}`)
   }
 
   const currentStartDate = watch('startDate')
@@ -118,7 +123,7 @@ const TripReservation = ({ tripId, tripStartDate, tripEndDate, maxGuests, priceP
               selected={field.value}
               error={!!errors.endDate}
               errorMessage={errors.endDate?.message}
-              maxDate={tripEndDate}
+              // maxDate={tripEndDate}
               minDate={currentStartDate ?? tripEndDate}
             />}
         />

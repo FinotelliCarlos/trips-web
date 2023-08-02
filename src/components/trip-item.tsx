@@ -25,7 +25,7 @@ const TripItem = ({ trip }: TripItemProps) => {
         </div>
 
         <h3>{trip.name}</h3>
-        <div className="flex items-center">
+        <div className="flex items-center gap-1">
           <ReactCountryFlag countryCode={trip.countryCode} svg />
           <p className="text-xs font-normal text-primaryGray">{trip.location}</p>
         </div>

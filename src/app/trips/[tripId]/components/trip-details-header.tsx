@@ -23,7 +23,7 @@ const TripDetailsHeader = ({ trip }: TripDetailsHeaderProps) => {
       <div className="fle flex-col p-5">
         <h1 className="font-semibold text-xl text-primaryDarker">{trip.name}</h1>
 
-        <div className="flex items-center">
+        <div className="flex items-center gap-1">
           <ReactCountryFlag countryCode={trip.countryCode} svg />
           <p className="text-xs font-normal text-primaryGray underline">{trip.location}</p>
         </div>
