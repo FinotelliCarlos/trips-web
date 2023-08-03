@@ -18,7 +18,7 @@ const RecommendedTrips = async () => {
     <div className="container mx-auto p-5">
       <LabelElement text="Destinos recomendados" />
 
-      <div className="flex flex-col items-center mt-5 gap-5">
+      <div className="flex flex-wrap items-center justify-center mt-5 gap-5">
         {trips.map((trip: Trip) => {
           return (
             <TripItem key={trip.id} trip={trip} />

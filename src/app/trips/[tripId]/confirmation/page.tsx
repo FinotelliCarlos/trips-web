@@ -9,6 +9,7 @@ import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
+import { toast } from 'react-toastify'
 
 interface TripParams {
   params: {
@@ -20,9 +21,35 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
   const [trip, setTrip] = useState<Trip | null>({} as Trip)
   const [currentTotalPrice, setCurrentTotalPrice] = useState<number | null>(0)
 
-  const router = useRouter()
-  const { status } = useSession()
   const searchParams = useSearchParams()
+  const { status, data } = useSession()
+  const router = useRouter()
+
+  const startDate = new Date(searchParams.get('startDate') as string)
+  const endDate = new Date(searchParams.get('endDate') as string)
+  const guests = searchParams.get('guests')
+
+  const handleBuyClick = async () => {
+    const response = await fetch('http://localhost:3000/api/trips/reservation', {
+      method: 'POST',
+      body: Buffer.from(JSON.stringify({
+        userId: (data?.user as any)?.id,
+        tripId,
+        startDate,
+        endDate,
+        guests: Number(guests),
+        totalPaid: currentTotalPrice
+      }))
+    })
+
+    if (!response.ok) {
+      toast.error('Houve algum problema ao criar sua reserva!', { position: 'bottom-center' })
+    }
+
+    router.push('/')
+
+    toast.success('Reserva criada com sucesso!', { position: 'bottom-center' })
+  }
 
   useEffect(() => {
     const fetchTrip = async () => {
@@ -42,7 +69,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
         return router.push('/')
       }
 
-      const { trip, totalPrice } = await res.json()
+      const { trip, totalPrice } = res
 
       setTrip(trip)
       setCurrentTotalPrice(totalPrice)
@@ -55,10 +82,6 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
     fetchTrip()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams, status, tripId])
-
-  const startDate = new Date(searchParams.get('startDate') as string)
-  const endDate = new Date(searchParams.get('endDate') as string)
-  const guests = searchParams.get('guests')
 
   if (!trip) return null
 
@@ -115,7 +138,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
           <p className="">{guests} hóspedes</p>
         </div>
 
-        <Button className='mt-5'>Finalizar compra</Button>
+        <Button className='mt-5' onClick={handleBuyClick}>Finalizar compra</Button>
       </div>
     </div>
   )

@@ -1,9 +1,10 @@
+import Footer from '@/components/template/footer'
+import Header from '@/components/template/header/header'
+import { NextAuthProvider } from '@/providers/auth'
+import ToastProvider from '@/providers/toast'
 import type { Metadata } from 'next'
 import { Poppins } from 'next/font/google'
 import './globals.css'
-import { NextAuthProvider } from '@/providers/auth'
-import Header from '@/components/template/header/header'
-import Footer from '@/components/template/footer'
 
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] })
 
@@ -21,11 +22,13 @@ export default function RootLayout({
     <html lang="en">
       <body className={poppins.className}>
         <NextAuthProvider>
-          <Header />
+          <ToastProvider>
+            <Header />
 
-          {children}
+            {children}
 
-          <Footer />
+            <Footer />
+          </ToastProvider>
         </NextAuthProvider>
       </body>
     </html>
