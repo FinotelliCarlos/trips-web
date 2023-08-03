@@ -2,11 +2,13 @@
 
 import { signOut, useSession } from "next-auth/react"
 import Image from "next/image"
+import Link from "next/link"
 import { useState } from "react"
 import { AiOutlineMenu } from 'react-icons/ai'
 
 const AuthenticatedHeaderButton = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
+
   const { data } = useSession()
   const handleSignOut = () => signOut()
 
@@ -29,8 +31,12 @@ const AuthenticatedHeaderButton = () => {
 
       {menuIsOpen && (
         <div
-          className="absolute z-50 text-sm top-12 w-full h-full bg-white rounded-lg shadow-md flex flex-col justify-center items-center"
+          className="absolute z-50 text-sm top-12 left-[-3rem] w-[140px] h-[100px] bg-white rounded-lg shadow-md flex flex-col justify-center items-start p-2"
         >
+          <Link href='/my-trips'>
+            <button className="text-primary text-sm font-semibold mb-2 border-solid border-b border-primaryGray pb-2">Minhas viagens</button>
+          </Link>
+
           <button className="text-primary text-sm font-semibold" onClick={handleSignOut}>Logout</button>
         </div>
       )}

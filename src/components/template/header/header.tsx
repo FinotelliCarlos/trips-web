@@ -2,9 +2,9 @@
 
 import LogoTrips from "@/components/logo-trips"
 import { useSession } from "next-auth/react"
+import Link from "next/link"
 import AuthenticatedHeaderButton from "./components/authenticated"
 import LoginButton from "./components/login"
-import Link from "next/link"
 
 const Header = () => {
   const { status } = useSession()
