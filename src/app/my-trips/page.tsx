@@ -1,5 +1,6 @@
 'use client'
 
+import Button from "@/components/button"
 import { Prisma } from "@prisma/client"
 import { useSession } from "next-auth/react"
 import { useRouter } from "next/navigation"
@@ -39,11 +40,18 @@ const MyTrips = () => {
     <div className="container mx-auto p-5">
       <h1 className="font-semibold text-primaryDarker text-xl">Minhas viagens</h1>
       <div className="flex items-center justify-center flex-wrap gap-4">
-        {reservations.map(reservation => {
-          return <UserReservationItem key={reservation.id} reservation={reservation} />
-        })}
+        {reservations.length !== 0 ?
+          <>
+            {reservations.map(reservation => {
+              return <UserReservationItem key={reservation.id} reservation={reservation} />
+            })}
+          </> :
+          <div className="flex flex-col gap-5 items-start">
+            <p className="font-medium text-primaryDarker text-xl">Você ainda não tem nenhuma reserva. 😓</p>
+            <Button variant="outlined" onClick={() => router.push('/')}>Volte e busque sua reserva!</Button>
+          </div>}
       </div>
-    </div>
+    </div >
   )
 }
 
