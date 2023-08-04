@@ -18,22 +18,24 @@ const MyTrips = () => {
   const userId = (data?.user as any)?.id
   const router = useRouter()
 
+  const fetchReservations = async () => {
+    const response = await fetch(`http://localhost:3000/api/user/${userId}/reservations`, {
+      method: 'GET'
+    })
+
+    const reservationsResponse = await response.json()
+
+    setReservations(reservationsResponse)
+  }
+
   useEffect(() => {
     if (status === "unauthenticated" || !userId) {
       return router.push('/')
     }
 
-    const fetchReservations = async () => {
-      const response = await fetch(`http://localhost:3000/api/user/${userId}/reservations`, {
-        method: 'GET'
-      })
-
-      const reservationsResponse = await response.json()
-
-      setReservations(reservationsResponse)
-    }
-
     fetchReservations()
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router, status, userId])
 
   return (
@@ -43,7 +45,7 @@ const MyTrips = () => {
         {reservations.length !== 0 ?
           <>
             {reservations.map(reservation => {
-              return <UserReservationItem key={reservation.id} reservation={reservation} />
+              return <UserReservationItem key={reservation.id} reservation={reservation} fetchReservations={fetchReservations} />
             })}
           </> :
           <div className="flex flex-col gap-5 items-start">

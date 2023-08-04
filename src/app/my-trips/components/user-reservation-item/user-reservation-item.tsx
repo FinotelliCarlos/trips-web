@@ -5,7 +5,6 @@ import { Prisma } from '@prisma/client'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import ReactCountryFlag from 'react-country-flag'
 import { toast } from 'react-toastify'
 
@@ -15,10 +14,10 @@ interface UserReservationItemProps {
       trip: true
     }
   }>
+  fetchReservations: () => void
 }
 
-const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
-  const router = useRouter()
+const UserReservationItem = ({ reservation, fetchReservations }: UserReservationItemProps) => {
 
   const { trip: { countryCode, coverImage, name, location }, startDate, endDate, guests, totalPaid, id } = reservation
 
@@ -33,7 +32,7 @@ const UserReservationItem = ({ reservation }: UserReservationItemProps) => {
 
     toast.success('Viagem cancelada com sucesso!', { position: 'bottom-center' })
 
-    router.replace('/my-trips')
+    fetchReservations()
   }
 
   return (
