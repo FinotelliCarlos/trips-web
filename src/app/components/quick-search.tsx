@@ -1,5 +1,6 @@
 import LabelElement from "@/components/label-element"
 import Image from "next/image"
+import Link from "next/link"
 
 const QUICK_SEARCH_TABS: Array<{
   src: string,
@@ -38,8 +39,13 @@ const QuickSearch = () => {
         {QUICK_SEARCH_TABS.map((tab) => {
           return (
             <div key={tab.alt} className="flex flex-col items-center gap-1 cursor-pointer">
-              <Image width={35} height={35} loading="eager" src={tab.src} alt={tab.alt} />
-              <p className="text-sm text-primaryGray">{tab.title}</p>
+              <Link
+                href={`/trips/search?text=${tab.title}`}
+                className="flex flex-col items-center hover:text-primary transition-all"
+              >
+                <Image width={35} height={35} loading="eager" src={tab.src} alt={tab.alt} />
+                <p className="text-sm text-primaryGray">{tab.title}</p>
+              </Link>
             </div>
           )
         })}
