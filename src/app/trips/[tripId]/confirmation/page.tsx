@@ -2,6 +2,7 @@
 
 import Button from '@/components/button'
 import { Trip } from '@prisma/client'
+import { loadStripe } from '@stripe/stripe-js'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 import { useSession } from 'next-auth/react'
@@ -18,8 +19,8 @@ interface TripParams {
 }
 
 const TripConfirmation = ({ params: { tripId } }: TripParams) => {
-  const [trip, setTrip] = useState<Trip | null>({} as Trip)
-  const [currentTotalPrice, setCurrentTotalPrice] = useState<number | null>(0)
+  const [trip, setTrip] = useState<Trip>({} as Trip)
+  const [currentTotalPrice, setCurrentTotalPrice] = useState<number>(0)
 
   const searchParams = useSearchParams()
   const { status, data } = useSession()
@@ -30,15 +31,18 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
   const guests = searchParams.get('guests')
 
   const handleBuyClick = async () => {
-    const response = await fetch('http://localhost:3000/api/trips/reservation', {
+    const response = await fetch('http://localhost:3000/api/payment', {
       method: 'POST',
       body: Buffer.from(JSON.stringify({
-        userId: (data?.user as any)?.id,
         tripId,
+        userId: (data?.user as any).id,
         startDate,
         endDate,
         guests: Number(guests),
-        totalPaid: currentTotalPrice
+        totalPrice: currentTotalPrice,
+        name: trip.name,
+        description: trip.description,
+        coverImage: trip.coverImage,
       }))
     })
 
@@ -46,7 +50,13 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
       toast.error('Houve algum problema ao criar sua reserva!', { position: 'bottom-center' })
     }
 
-    router.push('/')
+    const { sessionId } = await response.json()
+
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY as string)
+
+    await stripe?.redirectToCheckout({ sessionId })
+
+    // router.push('/')
 
     toast.success('Reserva criada com sucesso!', { position: 'bottom-center' })
   }
@@ -80,8 +90,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
     }
 
     fetchTrip()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [searchParams, status, tripId])
+  }, [router, searchParams, status, tripId])
 
   if (!trip) return null
 
