@@ -40,8 +40,8 @@ const MyTrips = () => {
 
   return (
     <div className="container mx-auto p-5">
-      <h1 className="font-semibold text-primaryDarker text-xl">Minhas viagens</h1>
-      <div className="flex items-center justify-center flex-wrap gap-4">
+      <h1 className="font-semibold text-primaryDarker text-xl lg:mb-5">Minhas viagens</h1>
+      <div className="flex items-center justify-start flex-wrap gap-4">
         {reservations.length !== 0 ?
           <>
             {reservations.map(reservation => {
