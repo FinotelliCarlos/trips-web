@@ -13,9 +13,9 @@ function Button({ className, variant = "primary", ...props }: ButtonProps) {
   };
 
   const _className = twMerge(
+    className,
     variantClasses[variant],
     "appearance-none rounded-lg p-2 text-sm font-medium shadow transition-all",
-    className
   );
 
   return (

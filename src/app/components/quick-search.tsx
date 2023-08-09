@@ -35,7 +35,7 @@ const QuickSearch = () => {
 
       <LabelElement text="Tente pesquisar por" />
 
-      <div className="flex w-full justify-around mt-5">
+      <div className="flex w-full justify-around mt-5 lg:justify-center lg:mt-10 gap-40">
         {QUICK_SEARCH_TABS.map((tab) => {
           return (
             <div key={tab.alt} className="flex flex-col items-center gap-1 cursor-pointer">
@@ -44,7 +44,7 @@ const QuickSearch = () => {
                 className="flex flex-col items-center hover:text-primary transition-all"
               >
                 <Image width={35} height={35} loading="eager" src={tab.src} alt={tab.alt} />
-                <p className="text-sm text-primaryGray">{tab.title}</p>
+                <p className="text-sm lg:text-base text-primaryGray">{tab.title}</p>
               </Link>
             </div>
           )
