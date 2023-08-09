@@ -10,7 +10,7 @@ const Header = () => {
   const { status } = useSession()
 
   return (
-    <div className="container mx-auto p-5 py-0 h-[93px] flex w-full justify-between items-center">
+    <div className="container mx-auto p-5 py-0 h-[93px] flex w-full justify-between items-center lg:border-b lg:border-primaryGrayLighter">
       <Link href='/'>
         <LogoTrips />
       </Link>

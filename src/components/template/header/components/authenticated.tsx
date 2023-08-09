@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useState } from "react"
 import { AiOutlineMenu } from 'react-icons/ai'
+import { RxExit } from 'react-icons/rx'
 
 const AuthenticatedHeaderButton = () => {
   const [menuIsOpen, setMenuIsOpen] = useState(false)
@@ -34,10 +35,13 @@ const AuthenticatedHeaderButton = () => {
           className="absolute z-50 text-sm top-12 left-[-3rem] w-[140px] h-[100px] bg-white rounded-lg shadow-md flex flex-col justify-center items-start p-2"
         >
           <Link href='/my-trips' onClick={handleOpenMenu}>
-            <button className="text-primary text-sm font-semibold mb-2 border-solid border-b border-primaryGray pb-2">Minhas viagens</button>
+            <button className="text-primaryDarker text-sm font-semibold mb-2 border-solid border-b border-primaryGrayLighter pb-2">Minhas viagens</button>
           </Link>
 
-          <button className="text-primary text-sm font-semibold" onClick={handleSignOut}>Logout</button>
+          <button className="text-red-400 text-sm font-semibold flex items-center justify-start gap-3" onClick={handleSignOut}>
+            <RxExit />
+            Sair
+          </button>
         </div>
       )}
     </div>

@@ -48,8 +48,8 @@ const MyTrips = () => {
               return <UserReservationItem key={reservation.id} reservation={reservation} fetchReservations={fetchReservations} />
             })}
           </> :
-          <div className="flex flex-col gap-5 items-start">
-            <p className="font-medium text-primaryDarker text-xl">Você ainda não tem nenhuma reserva. 😓</p>
+          <div className="flex flex-col gap-5 items-start lg:max-w-[420px]">
+            <p className="font-medium text-primaryDarker text-xl">Você ainda não tem nenhuma reserva.</p>
             <Button variant="outlined" onClick={() => router.push('/')}>Volte e busque sua reserva!</Button>
           </div>}
       </div>
