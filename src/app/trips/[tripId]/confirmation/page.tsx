@@ -31,7 +31,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
   const guests = searchParams.get('guests')
 
   const handleBuyClick = async () => {
-    const response = await fetch('http://localhost:3000/api/payment', {
+    const response = await fetch('/api/payment', {
       method: 'POST',
       body: Buffer.from(JSON.stringify({
         tripId,
@@ -63,7 +63,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
 
   useEffect(() => {
     const fetchTrip = async () => {
-      const response = await fetch('http://localhost:3000/api/trips/check', {
+      const response = await fetch('/api/trips/check', {
         method: 'POST',
         body:
           Buffer.from(JSON.stringify({

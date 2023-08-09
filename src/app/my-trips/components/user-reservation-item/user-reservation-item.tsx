@@ -22,7 +22,7 @@ const UserReservationItem = ({ reservation, fetchReservations }: UserReservation
   const { trip: { countryCode, coverImage, name, location }, startDate, endDate, guests, totalPaid, id } = reservation
 
   const handleDeleteReservation = async () => {
-    const response = await fetch(`http://localhost:3000/api/trips/reservation/${id}`, {
+    const response = await fetch(`/api/trips/reservation/${id}`, {
       method: 'DELETE'
     })
 
