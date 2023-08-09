@@ -35,7 +35,7 @@ const QuickSearch = () => {
 
       <LabelElement text="Tente pesquisar por" />
 
-      <div className="flex w-full justify-around mt-5 lg:justify-center lg:mt-10 gap-40">
+      <div className="flex w-full justify-around mt-5 lg:justify-center lg:mt-10 lg:gap-40">
         {QUICK_SEARCH_TABS.map((tab) => {
           return (
             <div key={tab.alt} className="flex flex-col items-center gap-1 cursor-pointer">

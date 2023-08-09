@@ -9,7 +9,7 @@ import './globals.css'
 const poppins = Poppins({ subsets: ['latin'], weight: ['400', '500', '600', '700', '800', '900'] })
 
 export const metadata: Metadata = {
-  title: 'Trips',
+  title: 'EzTravels',
   description: 'Sistema de reserva de viagens!',
 }
 

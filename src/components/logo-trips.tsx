@@ -1,11 +1,11 @@
-import Image from "next/image"
+import { SiYourtraveldottv } from 'react-icons/si'
 
 const LogoTrips = () => {
   return (
-    <div className="flex items-center justify-center gap-1">
-      <Image width={26} height={26} src='/trips.svg' alt="trips" />
-      <p className="text-primary font-normal text-2xl">
-        trips
+    <div className="flex items-center justify-center gap-2 text-2xl text-primary">
+      <SiYourtraveldottv />
+      <p className="font-semibold">
+        EzTravels
       </p>
     </div>
   )
