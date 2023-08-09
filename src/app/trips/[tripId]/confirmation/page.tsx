@@ -95,7 +95,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
   if (!trip) return null
 
   return (
-    <div className='container mx-auto p-5 h-full'>
+    <div className='container mx-auto p-5 h-full lg:max-w-[500px]'>
       <h1 className="font-semibold text-xl text-primaryDarker">Sua viagem</h1>
 
       <div className="flex flex-col p-5 mt-5 border border-solid border-primaryGrayLighter shadow-lg rounded-lg">
