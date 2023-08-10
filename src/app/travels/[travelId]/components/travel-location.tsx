@@ -1,12 +1,12 @@
 import Button from "@/components/button"
 import Image from "next/image"
 
-interface TripLocationProps {
+interface TravelLocationProps {
   location: string
   locationDescription: string
 }
 
-const TripLocation = ({ location, locationDescription }: TripLocationProps) => {
+const TravelLocation = ({ location, locationDescription }: TravelLocationProps) => {
   return (
     <div className="p-5 lg:p-0 lg:mt-12 lg:pb-20">
       <h2 className="font-semibold text-primaryDarker mb-5 lg:text-xl">Localização</h2>
@@ -26,4 +26,4 @@ const TripLocation = ({ location, locationDescription }: TripLocationProps) => {
   )
 }
 
-export default TripLocation
+export default TravelLocation

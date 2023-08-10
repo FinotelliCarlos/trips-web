@@ -1,13 +1,13 @@
 import QuickSearch from "./components/quick-search";
-import RecommendedTrips from "./components/recommended-trips";
-import TripSearch from "./components/trip-search";
+import RecommendedTravels from "./components/recommended-travels";
+import TravelSearch from "./components/travel-search";
 
 export default function Home() {
   return (
     <div>
-      <TripSearch />
+      <TravelSearch />
       <QuickSearch />
-      <RecommendedTrips />
+      <RecommendedTravels />
     </div>
   )
 }

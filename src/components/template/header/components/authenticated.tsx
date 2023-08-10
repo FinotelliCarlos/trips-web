@@ -34,7 +34,7 @@ const AuthenticatedHeaderButton = () => {
         <div
           className="absolute z-50 text-sm top-12 left-[-3rem] w-[140px] h-[100px] bg-white rounded-lg shadow-md flex flex-col justify-center items-start p-2"
         >
-          <Link href='/my-trips' onClick={handleOpenMenu}>
+          <Link href='/my-travels' onClick={handleOpenMenu}>
             <button className="text-primaryDarker text-sm font-semibold mb-2 border-solid border-b border-primaryGrayLighter pb-2">Minhas viagens</button>
           </Link>
 

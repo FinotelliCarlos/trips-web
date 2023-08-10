@@ -2,11 +2,11 @@ import { Travel } from "@prisma/client"
 import Image from "next/image"
 import ReactCountryFlag from "react-country-flag"
 
-interface TripDetailsHeaderProps {
+interface TravelDetailsHeaderProps {
   travel: Travel
 }
 
-const TripDetailsHeader = ({ travel }: TripDetailsHeaderProps) => {
+const TravelDetailsHeader = ({ travel }: TravelDetailsHeaderProps) => {
   return (
     <div className="flex flex-col">
       <div className="relative h-[300px] w-full lg:hidden">
@@ -109,4 +109,4 @@ const TripDetailsHeader = ({ travel }: TripDetailsHeaderProps) => {
   )
 }
 
-export default TripDetailsHeader
+export default TravelDetailsHeader

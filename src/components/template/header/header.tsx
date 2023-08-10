@@ -1,6 +1,6 @@
 "use client"
 
-import LogoTrips from "@/components/logo-trips"
+import LogoTravels from "@/components/logo-travels"
 import { useSession } from "next-auth/react"
 import Link from "next/link"
 import AuthenticatedHeaderButton from "./components/authenticated"
@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <div className="container mx-auto p-5 py-0 h-[93px] flex w-full justify-between items-center lg:border-b lg:border-primaryGrayLighter">
       <Link href='/'>
-        <LogoTrips />
+        <LogoTravels />
       </Link>
 
 

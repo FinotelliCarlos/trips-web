@@ -1,18 +1,18 @@
 "use client";
 
-import TripItem from "@/components/trip-item";
+import TravelItem from "@/components/travel-item";
 import { Travel } from "@prisma/client";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const Trips = () => {
+const Travels = () => {
   const [travels, setTravels] = useState<Travel[]>([]);
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    const fetchTrips = async () => {
+    const fetchTravels = async () => {
       const response = await fetch(
-        `/api/trips/search?text=${searchParams.get("text") ?? ""}&startDate=${searchParams.get("startDate")}&budget=${searchParams.get("budget")}`
+        `/api/travels/search?text=${searchParams.get("text") ?? ""}&startDate=${searchParams.get("startDate")}&budget=${searchParams.get("budget")}`
       );
 
       const data = await response.json();
@@ -20,7 +20,7 @@ const Trips = () => {
       setTravels(data);
     };
 
-    fetchTrips();
+    fetchTravels();
   }, [searchParams]);
 
   return (
@@ -32,7 +32,7 @@ const Trips = () => {
         </h2>
         <div className="flex flex-wrap gap-4 lg:grid lg:grid-cols-4 lg:gap-10 lg:mt-6 lg:pb-16">
           {travels?.map((travel) => (
-            <TripItem key={travel.id} travel={travel} />
+            <TravelItem key={travel.id} travel={travel} />
           ))}
         </div>
       </div>
@@ -40,4 +40,4 @@ const Trips = () => {
   );
 };
 
-export default Trips;
+export default Travels;

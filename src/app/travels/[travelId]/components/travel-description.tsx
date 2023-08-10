@@ -1,9 +1,9 @@
 
-interface TripDescriptionProps {
+interface TravelDescriptionProps {
   description: string
 }
 
-const TripDescription = ({ description }: TripDescriptionProps) => {
+const TravelDescription = ({ description }: TravelDescriptionProps) => {
   return (
     <div className="flex flex-col p-5 lg:p-0">
       <h2 className="font-semibold text-primaryDarker lg:text-xl">Sobre a viagem</h2>
@@ -12,4 +12,4 @@ const TripDescription = ({ description }: TripDescriptionProps) => {
   )
 }
 
-export default TripDescription
+export default TravelDescription

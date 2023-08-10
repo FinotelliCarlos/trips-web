@@ -40,7 +40,7 @@ const QuickSearch = () => {
           return (
             <div key={tab.alt} className="flex flex-col items-center gap-1 cursor-pointer">
               <Link
-                href={`/trips/search?text=${tab.title}`}
+                href={`/travels/search?text=${tab.title}`}
                 className="flex flex-col items-center hover:text-primary transition-all"
               >
                 <Image width={35} height={35} loading="eager" src={tab.src} alt={tab.alt} />

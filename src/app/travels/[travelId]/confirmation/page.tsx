@@ -12,13 +12,13 @@ import { useEffect, useState } from 'react'
 import ReactCountryFlag from 'react-country-flag'
 import { toast } from 'react-toastify'
 
-interface TripParams {
+interface TravelParams {
   params: {
     travelId: string
   }
 }
 
-const TripConfirmation = ({ params: { travelId } }: TripParams) => {
+const TravelConfirmation = ({ params: { travelId } }: TravelParams) => {
   const [travel, setTravel] = useState<Travel>({} as Travel)
   const [currentTotalPrice, setCurrentTotalPrice] = useState<number>(0)
 
@@ -62,8 +62,8 @@ const TripConfirmation = ({ params: { travelId } }: TripParams) => {
   }
 
   useEffect(() => {
-    const fetchTrip = async () => {
-      const response = await fetch('/api/trips/check', {
+    const fetchTravel = async () => {
+      const response = await fetch('/api/travels/check', {
         method: 'POST',
         body:
           Buffer.from(JSON.stringify({
@@ -89,7 +89,7 @@ const TripConfirmation = ({ params: { travelId } }: TripParams) => {
       return router.push('/')
     }
 
-    fetchTrip()
+    fetchTravel()
   }, [router, searchParams, status, travelId])
 
   if (!travel) return null
@@ -153,4 +153,4 @@ const TripConfirmation = ({ params: { travelId } }: TripParams) => {
   )
 }
 
-export default TripConfirmation
+export default TravelConfirmation

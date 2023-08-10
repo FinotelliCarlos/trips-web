@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState } from "react"
 import UserReservationItem from "./components/user-reservation-item/user-reservation-item"
 
-const MyTrips = () => {
+const MyTravels = () => {
   const [reservations, setReservations] = useState<Prisma.TravelReservationGetPayload<{
     include: {
       travel: true
@@ -57,4 +57,4 @@ const MyTrips = () => {
   )
 }
 
-export default MyTrips
+export default MyTravels

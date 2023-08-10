@@ -7,7 +7,7 @@ import { differenceInDays } from "date-fns"
 import { useRouter } from "next/navigation"
 import { Controller, useForm } from "react-hook-form"
 
-interface TripReservationProps {
+interface TravelReservationProps {
   travelId: string
   startDate: Date
   endDate: Date
@@ -15,19 +15,19 @@ interface TripReservationProps {
   pricePerDay: number
 }
 
-interface TripReservationForm {
+interface TravelReservationForm {
   guests: number
   startDate: Date | null
   endDate: Date | null
 }
 
-const TripReservation = ({ travelId, startDate, endDate, maxGuests, pricePerDay }: TripReservationProps) => {
-  const { register, handleSubmit, formState: { errors }, control, watch, setError } = useForm<TripReservationForm>()
+const TravelReservation = ({ travelId, startDate, endDate, maxGuests, pricePerDay }: TravelReservationProps) => {
+  const { register, handleSubmit, formState: { errors }, control, watch, setError } = useForm<TravelReservationForm>()
 
   const router = useRouter()
 
-  const onSubmit = async (data: TripReservationForm) => {
-    const response = await fetch('/api/trips/check', {
+  const onSubmit = async (data: TravelReservationForm) => {
+    const response = await fetch('/api/travels/check', {
       method: 'POST',
       body:
         Buffer.from(JSON.stringify({
@@ -71,7 +71,7 @@ const TripReservation = ({ travelId, startDate, endDate, maxGuests, pricePerDay 
       return
     }
 
-    router.push(`/trips/${travelId}/confirmation?startDate=${data.startDate?.toISOString()}&endDate=${data.endDate?.toISOString()}&guests=${data.guests}`)
+    router.push(`/travels/${travelId}/confirmation?startDate=${data.startDate?.toISOString()}&endDate=${data.endDate?.toISOString()}&guests=${data.guests}`)
   }
 
   const currentStartDate = watch('startDate')
@@ -176,4 +176,4 @@ const TripReservation = ({ travelId, startDate, endDate, maxGuests, pricePerDay 
   )
 }
 
-export default TripReservation
+export default TravelReservation
