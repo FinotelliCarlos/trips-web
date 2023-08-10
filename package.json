@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "migrate": "npx prisma migrate dev",
+    "seed": "npx prisma db seed",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/payment/success",
     "postinstall": "npx prisma generate"
   },

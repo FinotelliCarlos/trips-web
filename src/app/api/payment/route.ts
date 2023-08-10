@@ -11,7 +11,7 @@ export async function POST(request: Request) {
   const userSession = await getServerSession(authOptions)
   const req = await request.json()
 
-  const { tripId, totalPrice, name, description, coverImage, startDate, endDate, guests } = req
+  const { travelId, totalPrice, name, description, coverImage, startDate, endDate, guests } = req
 
   const session = await stripe.checkout.sessions.create({
     success_url: process.env.HOST_URL as string,
@@ -21,7 +21,7 @@ export async function POST(request: Request) {
       startDate,
       endDate,
       totalPrice,
-      tripId,
+      travelId,
       guests,
     },
     line_items: [

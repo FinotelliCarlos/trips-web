@@ -9,9 +9,9 @@ import ReactCountryFlag from 'react-country-flag'
 import { toast } from 'react-toastify'
 
 interface UserReservationItemProps {
-  reservation: Prisma.TripReservationGetPayload<{
+  reservation: Prisma.TravelReservationGetPayload<{
     include: {
-      trip: true
+      travel: true
     }
   }>
   fetchReservations: () => void
@@ -19,7 +19,7 @@ interface UserReservationItemProps {
 
 const UserReservationItem = ({ reservation, fetchReservations }: UserReservationItemProps) => {
 
-  const { trip: { countryCode, coverImage, name, location }, startDate, endDate, guests, totalPaid, id } = reservation
+  const { travel: { countryCode, coverImage, name, location }, startDate, endDate, guests, totalPaid, id } = reservation
 
   const handleDeleteReservation = async () => {
     const response = await fetch(`/api/trips/reservation/${id}`, {

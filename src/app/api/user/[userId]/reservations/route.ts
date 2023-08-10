@@ -11,8 +11,8 @@ export async function GET(request: Request, { params: { userId } }: { params: { 
     }
   }
 
-  const reservations = await prisma.tripReservation.findMany({
-    where: { userId }, include: { trip: true }
+  const reservations = await prisma.travelReservation.findMany({
+    where: { userId }, include: { travel: true }
   })
 
   return new NextResponse(JSON.stringify(reservations), { status: 200 })

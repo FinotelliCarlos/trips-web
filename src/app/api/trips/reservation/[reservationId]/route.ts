@@ -11,8 +11,8 @@ export async function DELETE(_request: Request, { params: { reservationId } }: {
     }
   }
 
-  const reservations = await prisma.tripReservation.delete({
-    where: { id: reservationId }, include: { trip: true }
+  const reservations = await prisma.travelReservation.delete({
+    where: { id: reservationId }, include: { travel: true }
   })
 
   return new NextResponse(JSON.stringify(reservations), { status: 200 })

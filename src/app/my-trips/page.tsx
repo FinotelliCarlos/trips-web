@@ -8,9 +8,9 @@ import { useEffect, useState } from "react"
 import UserReservationItem from "./components/user-reservation-item/user-reservation-item"
 
 const MyTrips = () => {
-  const [reservations, setReservations] = useState<Prisma.TripReservationGetPayload<{
+  const [reservations, setReservations] = useState<Prisma.TravelReservationGetPayload<{
     include: {
-      trip: true
+      travel: true
     }
   }>[]>([])
 

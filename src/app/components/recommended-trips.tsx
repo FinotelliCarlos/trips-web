@@ -1,27 +1,27 @@
 import LabelElement from "@/components/label-element"
 import TripItem from "@/components/trip-item"
 import { prisma } from "@/lib/prisma"
-import { Trip } from "@prisma/client"
+import { Travel } from "@prisma/client"
 
 const getTrips = async () => {
-  const trips = await prisma.trip.findMany({})
+  const travels = await prisma.travel.findMany({})
 
-  return trips
+  return travels
 }
 
 const RecommendedTrips = async () => {
-  const trips = await getTrips()
+  const travels = await getTrips()
 
-  if (!trips) return null
+  if (!travels) return null
 
   return (
     <div className="container mx-auto p-5">
       <LabelElement text="Destinos recomendados" />
 
       <div className="flex flex-wrap items-center mt-5 gap-5 lg:mt-12 justify-center lg:gap-10">
-        {trips.map((trip: Trip) => {
+        {travels.map((travel: Travel) => {
           return (
-            <TripItem key={trip.id} trip={trip} />
+            <TripItem key={travel.id} travel={travel} />
           )
         })}
       </div>

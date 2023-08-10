@@ -1,7 +1,7 @@
 'use client'
 
 import Button from '@/components/button'
-import { Trip } from '@prisma/client'
+import { Travel } from '@prisma/client'
 import { loadStripe } from '@stripe/stripe-js'
 import { format } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
@@ -14,12 +14,12 @@ import { toast } from 'react-toastify'
 
 interface TripParams {
   params: {
-    tripId: string
+    travelId: string
   }
 }
 
-const TripConfirmation = ({ params: { tripId } }: TripParams) => {
-  const [trip, setTrip] = useState<Trip>({} as Trip)
+const TripConfirmation = ({ params: { travelId } }: TripParams) => {
+  const [travel, setTravel] = useState<Travel>({} as Travel)
   const [currentTotalPrice, setCurrentTotalPrice] = useState<number>(0)
 
   const searchParams = useSearchParams()
@@ -34,15 +34,15 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
     const response = await fetch('/api/payment', {
       method: 'POST',
       body: Buffer.from(JSON.stringify({
-        tripId,
+        travelId,
         userId: (data?.user as any).id,
         startDate,
         endDate,
         guests: Number(guests),
         totalPrice: currentTotalPrice,
-        name: trip.name,
-        description: trip.description,
-        coverImage: trip.coverImage,
+        name: travel.name,
+        description: travel.description,
+        coverImage: travel.coverImage,
       }))
     })
 
@@ -69,7 +69,7 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
           Buffer.from(JSON.stringify({
             startDate: searchParams.get('startDate'),
             endDate: searchParams.get('endDate'),
-            tripId
+            travelId
           }))
       })
 
@@ -79,9 +79,9 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
         return router.push('/')
       }
 
-      const { trip, totalPrice } = res
+      const { travel, totalPrice } = res
 
-      setTrip(trip)
+      setTravel(travel)
       setCurrentTotalPrice(totalPrice)
     }
 
@@ -90,9 +90,9 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
     }
 
     fetchTrip()
-  }, [router, searchParams, status, tripId])
+  }, [router, searchParams, status, travelId])
 
-  if (!trip) return null
+  if (!travel) return null
 
   return (
     <div className='container mx-auto p-5 h-full lg:max-w-[500px]'>
@@ -105,8 +105,8 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
               fill
               className='rounded-lg'
               loading='lazy'
-              src={trip.coverImage}
-              alt={trip.name}
+              src={travel.coverImage}
+              alt={travel.name}
               style={{
                 objectFit: 'cover'
               }}
@@ -117,11 +117,11 @@ const TripConfirmation = ({ params: { tripId } }: TripParams) => {
 
 
             <h2 className="text-xl text-primaryDarker font-semibold ">
-              {trip.name}
+              {travel.name}
             </h2>
             <div className="flex items-center gap-1">
-              <ReactCountryFlag countryCode={trip.countryCode} svg />
-              <p className="text-xs font-normal text-primaryGray underline">{trip.location}</p>
+              <ReactCountryFlag countryCode={travel.countryCode} svg />
+              <p className="text-xs font-normal text-primaryGray underline">{travel.location}</p>
             </div>
 
           </div>

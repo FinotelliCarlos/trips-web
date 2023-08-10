@@ -46,7 +46,7 @@ model User {
   accounts Account[]
   sessions Session[]
 
-  reservations TripReservation[]
+  reservations TravelReservation[]
 }
 
 model VerificationToken {
@@ -57,7 +57,7 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Trip {
+model Travel {
   id                  String   @id @default(uuid())
   name                String
   location            String
@@ -73,19 +73,19 @@ model Trip {
   countryCode         String
   recommended         Boolean  @default(false)
 
-  reservations TripReservation[]
+  reservations TravelReservation[]
 }
 
-model TripReservation {
-  id     String @id @default(uuid())
-  tripId String
-  userId String
+model TravelReservation {
+  id       String @id @default(uuid())
+  travelId String
+  userId   String
 
   startDate DateTime
   endDate   DateTime
   totalPaid Decimal  @db.Decimal(8, 2)
   guests    Int      @default(2)
 
-  trip Trip @relation(fields: [tripId], references: [id])
-  user User @relation(fields: [userId], references: [id])
+  travel Travel @relation(fields: [travelId], references: [id])
+  user   User   @relation(fields: [userId], references: [id])
 }

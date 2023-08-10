@@ -69,9 +69,9 @@ export async function GET(request: Request) {
     );
   }
 
-  const trips = await prisma.trip.findMany({
+  const travels = await prisma.travel.findMany({
     where: generateSearchQuery(text, startDate, budget),
   });
 
-  return new NextResponse(JSON.stringify(trips), { status: 200 });
+  return new NextResponse(JSON.stringify(travels), { status: 200 });
 }

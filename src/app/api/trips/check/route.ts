@@ -5,16 +5,16 @@ import { NextResponse } from "next/server"
 export async function POST(request: Request) {
   const req = await request.json()
 
-  const trip = await prisma.trip.findUnique({
+  const travel = await prisma.travel.findUnique({
     where: {
-      id: req.tripId
+      id: req.travelId
     }
   })
 
-  if (!trip) {
+  if (!travel) {
     return new NextResponse(JSON.stringify({
       error: {
-        code: 'TRIP_NOT_FOUND'
+        code: 'TRAVEL_NOT_FOUND'
       }
     }))
   }
@@ -41,9 +41,9 @@ export async function POST(request: Request) {
     )
   }
 
-  const reservations = await prisma.tripReservation.findMany({
+  const reservations = await prisma.travelReservation.findMany({
     where: {
-      tripId: req.tripId,
+      travelId: req.travelId,
       startDate: {
         lte: new Date(req.endDate)
       },
@@ -56,16 +56,16 @@ export async function POST(request: Request) {
   if (reservations.length > 0) {
     return new NextResponse(JSON.stringify({
       error: {
-        code: 'TRIP_ALREADY_RESERVED'
+        code: 'TRAVEL_ALREADY_RESERVED'
       }
     }))
   }
 
-  const totalPrice = differenceInDays(new Date(req.endDate), new Date(req.startDate)) * Number(trip.pricePerDay)
+  const totalPrice = differenceInDays(new Date(req.endDate), new Date(req.startDate)) * Number(travel.pricePerDay)
 
   return new NextResponse(JSON.stringify({
     success: true,
-    trip,
+    travel,
     totalPrice
   }))
 }

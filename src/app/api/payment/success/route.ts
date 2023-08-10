@@ -20,12 +20,12 @@ export async function POST(request: Request) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object as any;
 
-    await prisma.tripReservation.create({
+    await prisma.travelReservation.create({
       data: {
         startDate: new Date(session.metadata.startDate),
         endDate: new Date(session.metadata.endDate),
         userId: session.metadata.userId,
-        tripId: session.metadata.tripId,
+        travelId: session.metadata.travelId,
         totalPaid: Number(session.metadata.totalPrice),
         guests: Number(session.metadata.guests),
       },
