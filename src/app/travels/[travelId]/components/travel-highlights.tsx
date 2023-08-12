@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { SiCheckmarx } from "react-icons/si"
 
 interface TravelHighlightsProps {
   highlights: string[]
@@ -12,8 +12,8 @@ const TravelHighlights = ({ highlights }: TravelHighlightsProps) => {
       <div className="flex flex-wrap gap-y-3 lg:mt-5">
         {highlights.map(highlight => {
           return (
-            <div key={highlight} className="flex items-center gap-2 lg:gap-3 w-1/2">
-              <Image width={15} height={15} src='/check-icon.png' alt={highlight} />
+            <div key={highlight} className="flex items-center gap-2 lg:gap-3 w-1/2 text-primary">
+              <SiCheckmarx />
               <p className="text-primaryGray text-xs lg:text-base">
                 {highlight}
               </p>
