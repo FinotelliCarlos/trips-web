@@ -16,7 +16,7 @@ const RecommendedTravels = async () => {
 
   return (
     <div className="container mx-auto p-5">
-      <LabelElement text="Destinos recomendados" />
+      <LabelElement text="Nossas recomendações" />
 
       <div className="flex flex-wrap items-center mt-5 gap-5 lg:mt-12 justify-center lg:gap-10">
         {travels.map((travel: Travel) => {

@@ -8,7 +8,7 @@ const LoginButton = () => {
 
   return (
     <button
-      className="relative flex items-center gap-3 py-3 px-4 border border-solid border-primaryGrayLighter p-13 rounded-md text-primary text-sm font-semibold"
+      className="relative flex items-center gap-3 py-3 px-4 border border-solid border-primary p-13 rounded-md text-primary text-sm font-semibold"
       onClick={handleLogin}
     >
       <AiOutlineLogin size={16} />

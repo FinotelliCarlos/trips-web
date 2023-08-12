@@ -11,7 +11,7 @@ const TravelItem = ({ travel }: TravelItemProps) => {
   return (
     <Link href={`/travels/${travel.id}`}>
       <div className="flex flex-col">
-        <div className="relative h-[280px] w-[280px]">
+        <div className="relative h-[220px] w-[300px]">
           <Image
             src={travel.coverImage}
             alt={travel.name}
@@ -24,14 +24,22 @@ const TravelItem = ({ travel }: TravelItemProps) => {
           />
         </div>
 
-        <h3>{travel.name}</h3>
+        <div className="flex items-center justify-between w-full mt-1">
+
+          <h3>{travel.name}</h3>
+
+          <p className="text-xs text-primaryGray">
+            <span className="text-primary font-medium">R${travel.pricePerDay.toString()}</span> por dia
+          </p>
+        </div>
+
+
+
         <div className="flex items-center gap-1">
           <ReactCountryFlag countryCode={travel.countryCode} svg />
           <p className="text-xs font-normal text-primaryGray">{travel.location}</p>
         </div>
-        <p className="text-xs text-primaryGray">
-          <span className="text-primary font-medium">R${travel.pricePerDay.toString()}</span> por dia
-        </p>
+
       </div>
     </Link>
   )

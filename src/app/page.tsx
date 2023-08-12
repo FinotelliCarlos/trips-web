@@ -4,7 +4,7 @@ import TravelSearch from "./components/travel-search";
 
 export default function Home() {
   return (
-    <div>
+    <div className="gap-1">
       <TravelSearch />
       <QuickSearch />
       <RecommendedTravels />

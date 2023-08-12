@@ -14,7 +14,7 @@ const TravelHighlights = ({ highlights }: TravelHighlightsProps) => {
           return (
             <div key={highlight} className="flex items-center gap-2 lg:gap-3 w-1/2 text-primary">
               <SiCheckmarx />
-              <p className="text-primaryGray text-xs lg:text-base">
+              <p className="text-xs lg:text-base">
                 {highlight}
               </p>
             </div>
