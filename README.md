@@ -1,34 +1,99 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Sua agência de viagens!
 
-## Getting Started
+### Esta aplicação possibilita a busca por um local para passar alguns dias de férias, unindo o usuário a facilidade de aquisição de uma data exclusiva aos locais mais requisitados.
 
-First, run the development server:
+<img src="public/logo.png" alt="logo" width="300">
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+<br>
+
+## Funcionalidades da aplicação:
+
+- Autenticação com google.
+  - Utilizando Next-Auth
+- Filtro de viagens através de parametros de rota.
+  - Palavras chave
+  - Por data
+  - Por orçamento
+- Agendamento de viagem.
+  - Validação de datas em aberto
+  - Validação de quantidade de hóspedes
+- Tratamento de formulários e validação de campos.
+  - Utilizando React-Hook-Form
+- Pagamento utilizando cartão de crédito. (Modo teste)
+  - Criádo WebHook para ourvir ação de pagamento e validar compra.
+- Listagem de viagens do usuário.
+  - Possivel cancelar a viagem.
+
+<br>
+
+## Tecnologias utilizadas
+
+- React.js
+- Typescript
+- Next.js
+- Server-components
+- Client-components
+- Next-Auth
+- React-hook-form
+- React-toastify
+- Stripe-js
+- Prisma
+- Supabase
+- Google Cloud Console
+- Tailwindcss
+
+<br>
+
+## Imagens
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+  <img src="public/home.png" alt="Imagem 1" style="width: 100%; max-width: 300px;">
+  <img src="public/search.png" alt="Imagem 2" style="width: 100%; max-width: 300px;">
+  <img src="public/travel-details.png" alt="Imagem 3" style="width: 100%; max-width: 300px;">
+  <img src="public/confirmation.png" alt="Imagem 3" style="width: 100%; max-width: 300px;">
+  <img src="public/my-travels.png" alt="Imagem 3" style="width: 100%; max-width: 300px;">
+  <!-- Adicione mais imagens conforme necessário -->
+</div>
+
+<br>
+
+# Instalação
+#### Pré-requisitos
+
+```
+  - node.js
+  - stripe CLI
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Clonar projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+git clone https://github.com/FinotelliCarlos/ez-travels-web.git
+cd ez-travels-web
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Instalar dependências 
 
-## Learn More
+```
+npm install
+# ou
+yarn
+```
 
-To learn more about Next.js, take a look at the following resources:
+#### Necessário configurar algumas variáveis de hambiente
+Crie um arquivo `.env` e adicione essas variáveis
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```env
+DATABASE_URL=postgresql://postgres:xxxxxxxxxxx@xx.xxxxxxxxxxxx.supabase.co:5432/postgres
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+GOOGLE_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+GOOGLE_CLIENT_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-## Deploy on Vercel
+NEXT_PUBLIC_STRIPE_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+STRIPE_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+STRIPE_WEBHOOK_SECRET_KEY=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+HOST_URL=http://localhost:3000
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+NEXTAUTH_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
