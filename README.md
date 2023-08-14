@@ -54,7 +54,6 @@
 <img src="public/travel-details.png" width="300">
 <img src="public/confirmation.png" width="300">
 <img src="public/my-travels.png" width="300">
-  <!-- Adicione mais imagens conforme necessário -->
 </div>
 
 <br>
