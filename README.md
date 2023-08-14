@@ -47,11 +47,11 @@
 ## Imagens
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-  <img src="public/home.png" alt="Imagem 1" style="width: 100%; max-width: 300px;">
-  <img src="public/search.png" alt="Imagem 2" style="width: 100%; max-width: 300px;">
-  <img src="public/travel-details.png" alt="Imagem 3" style="width: 100%; max-width: 300px;">
-  <img src="public/confirmation.png" alt="Imagem 3" style="width: 100%; max-width: 300px;">
-  <img src="public/my-travels.png" alt="Imagem 3" style="width: 100%; max-width: 300px;">
+<img src="public/home.png" width="300">
+<img src="public/search.png" width="300">
+<img src="public/travel-details.png" width="300">
+<img src="public/confirmation.png" width="300">
+<img src="public/my-travels.png" width="300">
   <!-- Adicione mais imagens conforme necessário -->
 </div>
 
