@@ -4,6 +4,8 @@
 
 <img src="public/logo.png" alt="logo" width="300">
 
+[Visite a aplicação clicando aqui](https://ez-travels-web.vercel.app)
+
 <br>
 
 ## Funcionalidades da aplicação:
@@ -97,3 +99,9 @@ HOST_URL=http://localhost:3000
 
 NEXTAUTH_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
+
+# Hospedado
+
+Clique [aqui](https://ez-travels-web.vercel.app)
+
+
