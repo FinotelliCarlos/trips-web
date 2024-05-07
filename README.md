@@ -97,23 +97,11 @@ HOST_URL=http://localhost:3000
 NEXTAUTH_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-  ⌨ <strong>#Como executar o projeto</strong>
+  ⌨ <strong>Obs.:</strong>
 
 <br>
 
 ```bash
-# Clonar o repositório
-git clone https://github.com/FinotelliCarlos/ez-travels-web
-
-# Entrar no diretório
-cd ez-travels-web
-
-# Baixar as dependências
-npm install | yarn
-
-# Executar o servidor
-npm run dev | yarn dev
-
 # Este passo necessita que você tenha o docker rodando em sua maquina e tenha a imagem postgress instalada
 # Também pode ser utilizado algum provedor online como foi feito neste projeto e inserir o link de conecção a .env DATABASE_URL
 # Executar seed ao banco de dados
