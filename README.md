@@ -4,8 +4,6 @@
 
 <img src="public/logo.png" alt="logo" width="300">
 
-[Visite a aplicação clicando aqui](https://ez-travels-web.vercel.app)
-
 <br>
 
 ## Funcionalidades da aplicação:
