@@ -14,7 +14,7 @@ export async function POST(request: Request) {
   const { travelId, totalPrice, name, description, coverImage, startDate, endDate, guests } = req
 
   const session = await stripe.checkout.sessions.create({
-    success_url: process.env.HOST_URL as string,
+    success_url: `${process.env.HOST_URL as string}/my-travels`,
     cancel_url: process.env.HOST_URL as string,
     metadata: {
       userId: (userSession?.user as any)?.id,

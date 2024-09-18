@@ -1,8 +1,10 @@
-## Sua agência de viagens!
-
-### Esta aplicação possibilita a busca por um local para passar alguns dias de férias, unindo o usuário a facilidade de aquisição de uma data exclusiva aos locais mais requisitados.
-
+<div align="center">
 <img src="public/logo.png" alt="logo" width="300">
+
+## Sua agência de viagens!
+### Esta aplicação possibilita a busca por um local para passar alguns dias de férias, unindo o usuário a facilidade de aquisição de uma data exclusiva aos locais mais requisitados.
+### Aplicação inspirada no (airbnb)
+</div>
 
 <br>
 
@@ -47,11 +49,11 @@
 ## Imagens
 
 <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
-<img src="public/home.png" width="300">
-<img src="public/search.png" width="300">
-<img src="public/travel-details.png" width="300">
-<img src="public/confirmation.png" width="300">
-<img src="public/my-travels.png" width="300">
+<img src="public/screenshots/home.png" width="300">
+<img src="public/screenshots/search.png" width="300">
+<img src="public/screenshots/travel-details.png" width="300">
+<img src="public/screenshots/confirmation.png" width="300">
+<img src="public/screenshots/my-travels.png" width="300">
 </div>
 
 <br>
@@ -79,6 +81,17 @@ npm install
 yarn
 ```
 
+#### Configurar o Stripe
+
+```bash
+#Necessario ter uma conta no stripe e a CLI instalada
+stripe login
+
+stripe listen --forward-to localhost:3000/api/payment/success
+
+# copie o SECRET disponibilizado e cole no arquivo .env referente a variavel de ambiente STRIPE_WEBHOOK_SECRET_KEY
+```
+
 #### Necessário configurar algumas variáveis de hambiente
 Crie um arquivo `.env` e adicione essas variáveis
 
@@ -97,16 +110,26 @@ HOST_URL=http://localhost:3000
 NEXTAUTH_SECRET=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
-  ⌨ <strong>Obs.:</strong>
-
-<br>
+#### Configurar o banco de dados
 
 ```bash
+# Obs.:
 # Este passo necessita que você tenha o docker rodando em sua maquina e tenha a imagem postgress instalada
 # Também pode ser utilizado algum provedor online como foi feito neste projeto e inserir o link de conecção a .env DATABASE_URL
 # Executar seed ao banco de dados
+
+docker compose up -d
+
+npx prisma generate
+npx prisma migrate dev
 npx prisma db seed
 
 ```
 
-</div>
+#### Rodar aplicação
+
+```bash
+npm run dev
+# ou
+yarn dev
+```
